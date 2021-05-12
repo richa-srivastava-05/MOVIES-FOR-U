@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body html {
+     margin:0;
+     padding:0;
+      }
+      .container{
+      background-color:whitesmoke;
+     text-align: center;
+     font-size:18px;
+     margin:20px; 
+     text-align:center;
+    font-size:25px;
+    }
+  
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 15px;
+  margin: 0px 0;
+  border: none;
+  cursor:pointer;;
+  width: 20%;
+  height:30px;
+   }
+button:hover {
+  opacity: 0.8;
+}
+   
+</style>
+<title>login page</title>
+</head>
+
+<body style="background-color:  rgb(235, 233, 233);" >
+  {% if user %}
+  <h4>Wrong credentials. Please check the username/password</h4>
+   {% endif %}
+
+  <form action="/login_user" method="POST">
+    <h1 style="text-align:center; font-size:50;"><u><b>USER LOGIN</b></u></h1>
+    
+    <div class="container"><br>
+
+      <div class="avatar">
+        <img src="/static/img2.jpg" style="height: 30%; widows:40px;"></div><br>
+
+       <label for="username"><b>Username</b></label><br>
+        <input type="text" placeholder="Enter Username" name="username" size="40" maxlength="50" required><br><br><br>
+         <label for="paswd"><b>Password</b></label><br>
+        <input type="password" placeholder="Enter Password" name="paswd" size="40" required></br><br>
+        <br><button  type="submit">Login</button><br><br>
+
+        <p style="font-style:normal;">Don't have an account?<a href="/signuppage" style="cursor: pointer;"> Click here to register</a></p><br>
+    </div>
+ </form>
+
+</body>
+</html>

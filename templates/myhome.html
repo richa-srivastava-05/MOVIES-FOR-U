@@ -1,0 +1,89 @@
+ <html>
+  <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<style>
+  .navbar {
+  width: 100%;
+  background-color: #555;
+  /* overflow: auto; */
+}
+.navbar a {
+  float: left;
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: 25%; 
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+  </style>
+
+<body style="background-color:rgb(235, 233, 233);">
+<div class="navbar">
+ <form  action="/home" method="POST"><button  type="submit">Home</button></form>
+  <a href="#aboutus">About Us</a> 
+  <a href="#info">Information</a> 
+  <a href="#contact">CONTACT</a> 
+  <form action="/logout" method="POST"><button  type="submit">LOGOUT</button></form> </div> 
+</br><br>
+  <div style="text-align: center; font-size: small;"><h3><u>CITIES</u></h3> </div>
+</br></br>
+<form action="/theatre" method="POST" style="text-align: center;">
+  <select name = "select_city" style="text-align: center;">
+    {% for elem in new_city %}
+      <option value = {{elem[1]}}> {{elem[0]}}</option>
+    {% endfor %}
+  </select>
+  <br><br><br>
+  <button class="btn">select</button></form>
+</br><br><br>
+
+  <div id="aboutus"><p><h3><u>ABOUT US</u></h3></p></br>
+   <p><i>"The home experience will never match the cinema experience no matter how good your home theatre is .
+     As the cinema experience continues to improve with technological advancements in Imax, 3D and massive speaker system"</i>. <b>MOVIES FOR U</b> is an online movie ticket reservation website.
+     It gives the platform to customers to reserve their seats in advance, sitting at home rather than waiting in lines .
+  People do not have time nowadays, and no one wants to waste it, so it saves your costly time and avoid trouble for future . This website shows you the field u have choosen on every path so that u remain clear and make no mistake.
+  This portal is for all those  who are keen to shop online. </p>
+    <br> <br></div>
+ <div ><footer class="section footer-classic context-dark bg-image" style="background:black;color: white;">
+  <div class="container">
+   <div class="row row-30">
+     <div id="contact" class="col-md-4 col-xl-5">
+         <h3>Contact</h3>
+              <dl class="contact-list">
+                <dt>Address:BANGALORE INDIA</dt><br>
+              </dl>
+              <dl class="contact-list">
+                <dt>email:<a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">richa05111999@gmail.com</a></dt><br>      
+              </dl>
+              <dl class="contact-list">
+                <dt>phone:8009499501</dt>
+                <dd><a</a>
+                </dd>
+              </dl>
+            </div>
+            <div id="info" class="col-md-4 col-xl-3">
+              <h3>Information</h3>
+              <ul class="nav-list">
+                <li><a href="#aboutus">About Us</a></li><br>
+                <li><a href="#">Catalog</a></li><br>
+                <li><a href="#">Blog</a></li><br>
+                <!-- <li><a href="#">Contacts</a></li> -->
+                <li><a href="#">Documentation</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 col-xl-1">
+              <br><br><br><br><br><p class="rights"><span>©2020 Copyright: MOVIES FOR U.<br><br>The content and images used on this site are copyright.</span></p>
+            </div>
+      </footer>
+    </div>
+</body>
+</html> 

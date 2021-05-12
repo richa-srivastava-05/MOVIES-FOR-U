@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>theatres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body html {
+     margin:0;
+     padding:0;
+      }
+     
+    .container{
+        background-image:url(static/theatre.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:bottom left; 
+        height:58vh; 
+        width:100%;
+        opacity:0.9;
+    }
+
+       .navbar {
+  width: 100%;
+  background-color: #555;
+  /* overflow: auto; */
+}
+.navbar a {
+  /* float: left; */
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%; /* Four links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+    </style>
+  </head>
+  <body style="background-color:rgb(235, 233, 233);">
+    <!--  -->
+  <div class="navbar">
+    <form action="/home" method="POST"><button  type="submit">Home</button></form>
+    <form action="/logout" method="POST"><button  type="submit">LOGOUT</button></form> </div>
+    
+    <div style="text-align: center; font-size: small;"><h3><u>THEATRES</u></h3> </div>
+ <!-- <img src="/static/theatre.jpg" width="1000" height="100" class="left"> -->
+  {% if new_city %}
+{% for elem in new_city %}
+    <p style="text-align: center;">Selected city:<h4 style="text-align: center;">{{elem[0]}}</h4></p>
+{% endfor %}
+{% endif %}
+
+<br>
+<form action="/movie" method="POST" style="text-align: center;">
+  <p>Select Theatre </p>
+  <select name = "select_theatre" style="text-align: center;">
+    {% for elem in new_theatre %}
+      <option value = {{elem[0]}}> {{elem[1]}}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  <button class="btn">select</button><br><br>
+  <p>Select Day </p>
+  <select name = "select_day"  style="text-align: center;">
+    {% for elem in new_day %}
+      <option value = {{elem[1]}}>  {{elem[0]}}</option>
+    {% endfor %}
+</select>
+<br><br>
+<button class="btn">select</button></form>
+
+<div class="container"> </br></br></div>
+</br>
+</body>
+</html> 

@@ -1,0 +1,117 @@
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<style>
+  .navbar {
+  width: 100%;
+  background-color: #555;
+  /* overflow: auto; */
+}
+.navbar a {
+  float: left;
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: 30%; /* Four links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  text-align:center;
+  background-color:whitesmoke;
+}
+  </style>
+
+<body onload="loadcities()">
+
+    
+<div class="navbar">
+  <a class="active" href="#">HOME</a> 
+  <a href="#">About Us</a> 
+  <a href="#">Information</a> </div>
+
+  <div id="cities"><table id="citytable" style="width:20%; margin-left:auto;
+margin-right: auto;margin-top: auto;margin-bottom:auto;">
+  <tr>
+    <th>CITIES</th>
+  </tr>
+</table> </div>
+
+
+<footer class="section footer-classic context-dark bg-image" style="background:black;color: white;">
+        <div class="container">
+          <div class="row row-30">
+            <div class="col-md-4 col-xl-5">
+              <p>ABOUT US</p></br>
+                <p>MOVIES FOR U is a online movie ticket reservation website.It gives the platform </p>
+                <!-- Rights-->
+                <p class="rights"><span>©2020 Copyright: MOVIES FOR U.</span></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h3>Contact</h3>
+              <dl class="contact-list">
+                <dt>Address:BANGALORE INDIA</dt>
+              </dl>
+              <dl class="contact-list">
+                <dt>email:<a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">richa05111999@gmail.com</a></dt>
+                
+              </dl>
+              <dl class="contact-list">
+                <dt>phone:8009499501</dt>
+                <dd><a</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-4 col-xl-3">
+              <h3>Information</h3>
+              <ul class="nav-list">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Catalog</a></li>
+                <li><a href="#">Blog</a></li>
+                <!-- <li><a href="#">Contacts</a></li> -->
+                <li><a href="#">Documentation</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>       
+      </footer>
+      <script>
+        function loadcities()
+        {
+          var city='{{city|tojson}}'
+           city=JSON.parse(city)
+          // alert("citiesloaded")
+          var table = document.getElementById("citytable")
+          for(let i=0 ; i<city.abc.length ; i++)
+          {
+            var v=document.createElement("BUTTON")
+            var a=document.createElement("a")
+             a.innerHTML=city.abc[i].cityname
+            v.type="button"
+            v.className="btn btn-info"
+            a.href="/theatres/"+city.abc[i].cityid
+            v.appendChild(a)
+           var row=table.insertRow(1+i)
+           var cell1= row.insertCell(0)
+           cell1.appendChild(v)
+
+           } 
+        } 
+  
+      </script>
+</body>
+</html> 

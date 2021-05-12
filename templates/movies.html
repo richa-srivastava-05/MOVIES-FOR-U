@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>theatres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+       .navbar {
+  width: 100%;
+  background-color: #555;
+}
+.navbar a {
+  float: left;
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%; /* Four links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+img {vertical-align: middle;}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  /* -webkit-animation-duration:20s; */
+  animation-name: fade;
+  animation-duration: 5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .6} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .6} 
+  to {opacity: 1}
+}
+
+</style>
+  </head>
+
+  <body style="background-color:rgb(235, 233, 233);">
+
+  <div class="navbar">
+    <form action="/home" method="POST"><button  type="submit">Home</button></form>
+    <form action="/logout" method="POST"><button  type="submit">LOGOUT</button></form> </div>
+    <div style="text-align: center; font-size: small;"><h3><u>MOVIES</u></h3> </div>
+ </div>
+</br>
+
+<div class="slideshow-container">
+
+  <div class="mySlides fade">
+   <img src="/static/movie.jpg " style="width:100%; height: 55%;">
+  </div>
+  <div class="mySlides fade">
+    <img src="/static/movie2.jpg " style="width:100%; height: 55%;">
+   </div>
+   <div class="mySlides fade">
+    <img src="/static/movie3.jpg " style="width:100%; height: 55%;">
+   </div>
+</div>
+  <br>
+
+{% if user_city %}
+  {% for elem in user_city %}
+    <p style="text-align: center;">Selected city : <h4 style="text-align: center;">{{elem[0]}}</h4></p><br>
+{% endfor %}
+{% endif %}
+  {% if new_theatre %}
+{% for elem in new_theatre %}
+    <p style="text-align: center;">Selected theatre : <h4 style="text-align: center;">{{elem[1]}}</h4></p>
+{% endfor %}
+{% endif %}
+<br>
+{% if new_day %}
+{% for elem in new_day %}
+    <p style="text-align: center;">Selected day : <h4 style="text-align: center;">{{elem[0]}}</h4></p>
+{% endfor %}
+{% endif %}
+<br>
+
+<form action="/timing" method="POST" style="text-align: center;">
+  <p>Select  Movie</p>
+  <select name = "select_movie_id" style="text-align: center;">
+    {% for elem in my_movie %}
+      <option value = {{elem[3]}}> {{elem[4]}}</option>
+    {% endfor %}
+  
+  </select>
+  <br><br>
+  <button class="btn">select</button>
+</form>
+
+<script>
+  var slideIndex = 0;
+  showSlides();
+  
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+  }
+  </script>
+
+</body>
+</html> 

@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>price</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+       .navbar {
+  width: 100%;
+  background-color: #555;
+  /* overflow: auto; */
+}
+.navbar a {
+  float: left;
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%; /* Four links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+.container {
+  position: relative;
+  text-align: center;
+  /* color: white; */
+}
+.centre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    </style>
+  </head>
+  <body style="background-color:rgb(235, 233, 233);">
+  <div class="navbar">
+    <form action="/home" method="POST"><button  type="submit">Home</button></form>
+    <form action="/logout" method="POST"><button  type="submit">LOGOUT</button></form> </div>
+    <div class="container">
+      <img src="/static/coin.jpg"  style="width:100%; height:90%; opacity: 0.4;">
+      <div class="centre">
+    <div style="text-align: center; font-size: small;"><h3><u><b>MOVIE DETAILS</b></u></h3> </div><br>
+  {% if user_city %}
+  {% for elem in user_city %}
+    <p style="text-align: center;"><b>Selected city : <h4 style="text-align: center;">{{elem[0]}}</h4></b></p><br>
+{% endfor %}
+{% endif %}
+{% if user_theatre %}
+{% for elem in user_theatre %}
+    <p style="text-align: center;"><b>Selected theatre : <h4 style="text-align: center;">{{elem[1]}}</h4></b></p>
+{% endfor %}
+{% endif %}
+<br>
+{% if user_day %}
+{% for elem in user_day %}
+    <p style="text-align: center;"><b>Selected day : <h4 style="text-align: center;">{{elem[0]}}</h4></b></p>
+{% endfor %}
+{% endif %}
+<br>
+{% for elem in new_movie %}
+    <p style="text-align: center;"><b>Selected movie: <h4 style="text-align: center;">{{elem[1]}}</h4></b></p>
+{% endfor %}
+<br>
+    {% for elem in time %}
+    <p style="text-align: center;"><b>Selected time: <h4 style="text-align: center;">{{elem[5]}}</h4></b></p>
+    {% endfor %}
+<br>
+<p style="text-align: center;"><b>Total price:</b></p>
+<form action="/price" method="POST" style="text-align: center;">
+  <select name = "totalprice" style="text-align: center;">
+    {% if price %}
+      <option value = {{price}}> {{price}}</option>
+      {% endif %}
+  </select>
+<br>
+<br>
+<button type="submit" style="font-size: medium; text-align: center;">PROCEED TO PAY</button></pre></form>
+</div>
+</div>
+</body>
+</html> 

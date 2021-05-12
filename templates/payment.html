@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>theatres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+       .navbar {
+  width: 100%;
+  background-color: #555;
+  /* overflow: auto; */
+}
+.navbar a {
+  float: left;
+  padding: 14px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%; /* Four links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+    </style>
+  </head>
+  <body style="background-color:rgb(235, 233, 233);">
+  <div class="navbar">
+    <form action="/home" method="POST"><button  type="submit">Home</button></form>
+    <form action="/logout" method="POST"><button  type="submit">LOGOUT</button></form> </div>
+    <div style="text-align: center; font-size: small;"><h3><u>PAYMENT</u></h3> </div>
+ </div>
+</br></br>
+    {% if amount %}
+        <h3>unsuccessfull payment! Try Again.</h3>
+    {% endif %}
+   <form action="/payment" method="POST" style="text-align: center;"> <label for="amount"><b>Enter Amount</b></label><br><br>
+    <input type="text" placeholder="Enter amount to pay" name="amount" size="40" maxlength="50" required>
+    <br><br><br>
+    <button type="submit" style="font-size: medium;">PAY</button></form>
+  
+</body>
+</html> 
